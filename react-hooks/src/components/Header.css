@@ -1,0 +1,83 @@
+/* =============== Header Styles ===============
+   - Matches demo theme (light/dark)
+   - Vibrant hover animations
+   - Sticky top navigation bar
+   - Theme toggle button
+   ============================================ */
+
+/* Root vars already defined in your demo CSS 
+   (so this header will adapt automatically) */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px) saturate(160%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+  box-shadow: var(--shadow);
+}
+
+/* Tabs Container */
+.nav-tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Tab Links */
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border);
+  transform: translateY(-1px);
+}
+
+/* Active Tab */
+.nav-link.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}

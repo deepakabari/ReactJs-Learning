@@ -1,0 +1,19 @@
+/* Global Reset / Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-body: "Inter", sans-serif;
+  --bg: #f9fafb;
+  --text: #111827;
+  --primary: #7c4dff;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}

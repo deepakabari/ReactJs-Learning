@@ -1,0 +1,360 @@
+/* =============== useCallback Demo Styles =============== 
+   Isolated under .ucbdemo (no override with uedemo)
+   ===================================================== */
+
+/* Base */
+.ucbdemo {
+  min-height: 100vh;
+  transition: background 400ms ease, color 200ms ease;
+  color: var(--text);
+}
+
+/* Light and Dark Theme Variables */
+.ucbdemo.dark {
+  --bg: #0f1226;
+  --bg-panel: rgba(255, 255, 255, 0.06);
+  --text: #e9ecff;
+  --muted: #b9c0ff;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --ok: #22c55e;
+  --danger: #ef4444;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  
+  background: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(124, 58, 237, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 500px at -10% 20%,
+      rgba(6, 182, 212, 0.25),
+      transparent 50%
+    ),
+    var(--bg);
+}
+
+.ucbdemo.light {
+  --bg: #f7f8ff;
+  --bg-panel: #ffffff;
+  --text: #1a1f36; /* Darker text for better contrast */
+  --muted: #4a5568; /* Darker muted text */
+  --border: rgba(0, 0, 0, 0.12);
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --ok: #16a34a;
+  --danger: #dc2626;
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  
+  background: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(124, 58, 237, 0.15),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 500px at -10% 20%,
+      rgba(6, 182, 212, 0.15),
+      transparent 50%
+    ),
+    var(--bg);
+}
+
+/* App Bar */
+.ucbdemo .appbar {
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(160%) blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg-panel), transparent);
+  z-index: 10;
+}
+.ucbdemo .title {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+
+.ucbdemo .controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* Grid */
+.ucbdemo .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 980px) {
+  .ucbdemo .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panels */
+.ucbdemo .panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.ucbdemo .panel header {
+  margin-bottom: 10px;
+}
+.ucbdemo .panel h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--text);
+}
+.ucbdemo .panel h4 {
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+.ucbdemo .muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Buttons */
+.ucbdemo .btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: transform 120ms ease, box-shadow 120ms ease,
+    border-color 200ms ease, background 200ms ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.ucbdemo .btn:hover {
+  transform: translateY(-1px);
+}
+.ucbdemo .btn:active {
+  transform: translateY(0);
+}
+
+.ucbdemo.light .btn {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
+  );
+  border: 1px solid var(--border);
+}
+
+/* Inputs */
+.ucbdemo .input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  outline: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  margin-bottom: 12px;
+}
+.ucbdemo .input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.22);
+}
+
+.ucbdemo.light .input {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
+}
+
+/* Lists */
+.ucbdemo .list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.ucbdemo .list li {
+  padding: 8px 10px;
+  border-bottom: 1px dashed var(--border);
+  color: var(--text);
+}
+
+/* Footer */
+.ucbdemo .footer {
+  padding: 14px 18px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* Helpers */
+.ucbdemo .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ucbdemo .comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+@media (max-width: 768px) {
+  .ucbdemo .comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animated gradient helpers */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.ucbdemo .gradient-1 {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(124, 58, 237, 0.08));
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+.ucbdemo .gradient-2 {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(34, 197, 94, 0.12));
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+.ucbdemo .gradient-3 {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(234, 179, 8, 0.12));
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+.ucbdemo .gradient-4 {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(99, 102, 241, 0.12));
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Code blocks */
+.ucbdemo .code-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin: 10px 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+.ucbdemo.light .code-block {
+  background: rgba(0, 0, 0, 0.05);
+  color: #2d3748;
+}
+
+/* Function demo */
+.ucbdemo .function-demo {
+  position: relative;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ucbdemo.light .function-demo {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.ucbdemo .render-count {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Dependency list */
+.ucbdemo .dependency-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.ucbdemo .dependency-chip {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  font-size: 12px;
+  color: var(--text);
+}
+
+/* Animation for when dependencies change */
+@keyframes highlight {
+  0% { background-color: rgba(124, 58, 237, 0.1); }
+  100% { background-color: transparent; }
+}
+
+.ucbdemo .dependency-change {
+  animation: highlight 1s ease;
+}
+
+/* Log panel */
+.ucbdemo .log {
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ucbdemo .loglist {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  max-height: 100%;
+}
+
+.ucbdemo .log-entry {
+  padding: 8px 10px;
+  border-bottom: 1px dashed var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  color: var(--text);
+}
+
+/* Theme transition for smoother changes */
+.ucbdemo,
+.ucbdemo .panel,
+.ucbdemo .btn,
+.ucbdemo .input {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

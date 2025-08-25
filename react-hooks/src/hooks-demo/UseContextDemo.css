@@ -1,0 +1,173 @@
+/* =============== useContext Demo Styles ===============
+   - Consistent with useEffectDemo
+   - Light/Dark themes
+   - Gradient panels
+   - Same UI patterns for easy learning
+   ==================================================== */
+
+:root {
+  --bg: #0f1226;
+  --bg-panel: rgba(255, 255, 255, 0.06);
+  --text: #e9ecff;
+  --muted: #b9c0ff;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ucdemo.light {
+  --bg: #f7f8ff;
+  --bg-panel: #ffffff;
+  --text: #161a33;
+  --muted: #5d6b9a;
+  --border: rgba(23, 30, 60, 0.12);
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --shadow: 0 10px 24px rgba(22, 26, 51, 0.1);
+}
+
+/* Layout */
+.ucdemo {
+  min-height: 100vh;
+  background: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(124, 58, 237, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 500px at -10% 20%,
+      rgba(6, 182, 212, 0.25),
+      transparent 50%
+    ),
+    var(--bg);
+  color: var(--text);
+  transition: background 400ms ease, color 200ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App Bar */
+.appbar {
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(160%) blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+  z-index: 10;
+}
+.title {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panels */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.panel h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Gradients */
+.gradient-2 {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.12),
+    rgba(34, 197, 94, 0.12)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+.gradient-3 {
+  background: linear-gradient(
+    135deg,
+    rgba(244, 63, 94, 0.12),
+    rgba(234, 179, 8, 0.12)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Button */
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: transform 120ms ease, background 200ms ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  padding: 14px 18px;
+  text-align: center;
+  color: var(--muted);
+  margin-top: auto;
+}

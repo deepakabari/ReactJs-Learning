@@ -1,0 +1,190 @@
+/* =============== useRef Demo Styles ===============
+   - Matches useEffectDemo style
+   - Scoped under .urfdemo to avoid clashes
+   ================================================== */
+
+:root {
+  --bg: #0f1226;
+  --bg-panel: rgba(255, 255, 255, 0.06);
+  --text: #e9ecff;
+  --muted: #b9c0ff;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --ok: #22c55e;
+  --danger: #ef4444;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.urfdemo.light {
+  --bg: #f7f8ff;
+  --bg-panel: #ffffff;
+  --text: #161a33;
+  --muted: #5d6b9a;
+  --border: rgba(23, 30, 60, 0.12);
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --ok: #16a34a;
+  --danger: #dc2626;
+  --shadow: 0 10px 24px rgba(22, 26, 51, 0.1);
+}
+
+/* Layout */
+.urfdemo {
+  min-height: 100vh;
+  background: radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(124, 58, 237, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 500px at -10% 20%,
+      rgba(6, 182, 212, 0.25),
+      transparent 50%
+    ),
+    var(--bg);
+  color: var(--text);
+  transition: background 400ms ease, color 200ms ease;
+}
+
+.appbar {
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(160%) blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+  z-index: 10;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panel h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Input + Buttons (reuse styles from UseEffectDemo) */
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  outline: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.22);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 600;
+  transition: transform 120ms ease, box-shadow 120ms ease,
+    border-color 200ms ease, background 200ms ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Logs */
+.log {
+  max-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+.loglist {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  max-height: 100%;
+}
+.loglist li {
+  padding: 8px 10px;
+  border-bottom: 1px dashed var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+/* Extra: Box styling */
+.colorbox {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-top: 10px;
+  transition: background 300ms ease;
+}
+
+.footer {
+  padding: 14px 18px;
+  text-align: center;
+  color: var(--muted);
+}
